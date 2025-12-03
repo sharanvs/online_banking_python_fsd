@@ -1,0 +1,33 @@
+{% extends "bank_app/base.html" %}
+{% block content %}
+
+<h2>Loan Amount Estimation Tool</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <label>Age:</label>
+    <input type="number" name="age" required>
+    <br/><br/>
+    <label>Monthly Income (₹):</label>
+    <input type="number" name="monthly_income" required>
+    <br/><br/>
+    <label>Credit Score (300–850):</label>
+    <input type="number" name="credit_score" required>
+    <br/><br/>
+    <label>Loan Tenure (years):</label>
+    <input type="number" name="loan_tenure" required>
+    <br/><br/>
+    <label>Existing Loan Amount:</label>
+    <input type="number" name="existing_loan" required>
+    <br/><br/>
+    <label>Dependents:</label>
+    <input type="number" name="dependents" required>
+    <br/><br/>
+    <button type="submit">Estimate Loan</button>
+</form>
+
+{% if predicted_amount %}
+    <h3>Estimated Eligible Loan Amount: ₹ {{ predicted_amount }}</h3>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "bank_app/base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <div class="card p-3">
+      <h4>Account Balance</h4>
+      <p class="display-6">{{ account.balance }}</p>
+      <p>
+        <a class="btn btn-success" href="{% url 'deposit' %}">Deposit</a>
+        <a class="btn btn-danger" href="{% url 'withdraw' %}">Withdraw</a>
+        <a class="btn btn-secondary" href="{% url 'tools_menu' %}">Tools</a>
+      </p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card p-3">
+      <h5>Recent Transactions</h5>
+      <ul class="list-unstyled">
+        {% for tx in transactions %}
+          <li>{{ tx.timestamp }} — {{ tx.tx_type }} — {{ tx.amount }}</li>
+        {% empty %}
+          <li>No transactions yet</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}

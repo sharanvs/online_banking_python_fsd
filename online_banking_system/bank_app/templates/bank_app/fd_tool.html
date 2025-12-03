@@ -1,0 +1,8 @@
+{% extends "bank_app/base.html" %}
+{% block content %}
+<div class="card p-3">
+  <h3>FD Calculator</h3>
+  <form method="get">{{ form.as_p }}<button class="btn btn-primary" type="submit">Calculate</button></form>
+  {% if result %}<p class="mt-3">Maturity amount: <strong>{{ result }}</strong></p>{% endif %}
+</div>
+{% endblock %}
