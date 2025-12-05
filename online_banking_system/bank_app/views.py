@@ -29,9 +29,9 @@ def register(request):
             user.set_password(password)
             user.save()
             Account.objects.create(user=user)
-            user = authenticate(username=user.username, password=password)
-            auth_login(request, user)
-            return redirect("dashboard")
+            # user = authenticate(username=user.username, password=password)
+            # auth_login(request, user)
+            return redirect("login")
     else:
         form = RegisterForm()
     return render(request, "bank_app/register.html", {"form": form})
